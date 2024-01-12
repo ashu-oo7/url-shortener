@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/styles/home.css">
+</head>
+<body>
+    <header>
+        <h1>URL Shortener</h1>
+        <% if (locals.name) { %>
+            <div class="user-box">
+                Hello <%= locals.name %>
+            </div>
+        <% } %>
+    </header>
+
+    <main>
+        <% if (locals.message ) { %>
+            <div class="message">
+                <%= message %> 
+            </div>
+        <% } %>
+        
+        <form method="post" action="/user">
+            <label for="url">URL Shortener</label>
+            <input type="text" id="url" name="url" placeholder="http://example.com" required>
+            <button type="submit">Generate</button>
+        </form>
+
+        <% if (locals.urls && (urls.length > 0)) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ShortID</th>
+                        <th>Redirect URL</th>
+                        <th>Visit History</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% urls.forEach(url => { %>
+                        <tr>
+                            <td><%= url.shortID %></td>
+                            <td><%= url.redirecturl %></td>
+                            <td><%= url.visithistory %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </main>
+</body>
+</html>

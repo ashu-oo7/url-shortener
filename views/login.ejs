@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/styles/login.css">
+</head>
+<body>
+    <main>
+        <h1>Login</h1>
+        <div class="form-box">
+            <form method="post" action="/login" >
+                <label for="name">Username</label>
+                <input type="text" id="name" name="name" placeholder="Username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="example@123" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <% if (locals.message) { %>
+            <div><%= locals.message %></div>
+        <% } %>
+        <div class="sign-up-button">
+            <form method="get" action="/signup">
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
